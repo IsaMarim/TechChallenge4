@@ -6,57 +6,81 @@ from utils import DropFeatures, MinMax, OneHotEncodingNames, OrdinalFeature, Ove
 import joblib
 from joblib import load
 
+# Import da base já tratada
 dados = pd.read_csv('bases/Obesity_tratado.csv')
 
-st.write("# Tech Challenge - Fase 4")
+# Título
+st.write("# Tech Challenge 4")
 
-st.write('### Gênero')
+st.markdown("<br>", unsafe_allow_html=True)
+st.write("Isabela Marim Mayerhoffer Pereira - RM 362023")
+st.write("Lucas Constantino Silva - RM 364620")
+st.write("Pedro Bugui Garcia - RM 360783")
+st.write("Sophia Yeshua Senra - RM 362887")
+
+st.markdown("<br>", unsafe_allow_html=True)
+st.write("## Modelo Preditivo de Obesidade")
+st.markdown("<br>", unsafe_allow_html=True)
+
+
+# Formulário
+st.write('### Dados Pessoais')
+
+st.markdown("<br>", unsafe_allow_html=True)
 input_genero = st.selectbox("Qual o seu gênero?", dados['Gender'].unique())
 
-st.write("### Idade")
+st.markdown("<br>", unsafe_allow_html=True)
 input_idade = int(st.slider('Selecione sua idade', 14, 61))
 
-st.write("### Altura")
+st.markdown("<br>", unsafe_allow_html=True)
 input_altura = float(st.slider('Selecione sua altura', 1.45, 1.98))
 
-# st.write("### Peso")
-# input_peso = float(st.number_input("Digite o seu peso (em KGs) e pressione enter para confirmar"))
-
-st.write('### Histórico Familiar')
+st.markdown("<br>", unsafe_allow_html=True)
 input_historico_familiar = st.radio('Na sua família existe histórico de excesso de peso?', ['Não', 'Sim'])
 
-st.write('### Consumo de Alimentos Calóricos')
+
+st.markdown("<br>", unsafe_allow_html=True)
+st.write('### Hábitos Alimentares')
+
+st.markdown("<br>", unsafe_allow_html=True)
 input_FAVC = st.radio('Você costuma consumir alimentos muito calóricos frequentemente?', ['Não', 'Sim'])
 
-st.write('### Consumo de Vegetais')
+st.markdown("<br>", unsafe_allow_html=True)
 input_FCVC= st.selectbox('Com que frequência você consome vegetais nas refeições?', ['Raramente', 'Às vezes', 'Sempre'])
 
-st.write('### Número de Refeições')
+st.markdown("<br>", unsafe_allow_html=True)
 input_NCP = st.selectbox('Quantas refeições você costuma consumir por dia?', ['Uma Refeição', 'Duas Refeições', 'Três Refeições', 'Quatro ou Mais Refeições'])
 
-st.write('### Número de Lanches')
+st.markdown("<br>", unsafe_allow_html=True)
 input_CAEC = st.selectbox('Com que frequência você consome lanches entre refeições principais?', ['Nunca', 'Às vezes', 'Frequentemente', 'Sempre'])
 
-st.write('### Fuma')
-input_SMOKE = st.radio('Você fuma?', ['Não', 'Sim'])
-
-st.write('### Consumo de Àgua')
+st.markdown("<br>", unsafe_allow_html=True)
 input_CH2O = st.selectbox('Quantos litros de água você costuma consumir por dia?', ['< 1 L/dia', '1–2 L/dia', '> 2 L/dia'])
 
-st.write('### Monitoramento Calórico')
+
+st.markdown("<br>", unsafe_allow_html=True)
+st.write('### Estilo de Vida')
+
+st.markdown("<br>", unsafe_allow_html=True)
+input_SMOKE = st.radio('Você fuma?', ['Não', 'Sim'])
+
+st.markdown("<br>", unsafe_allow_html=True)
 input_SCC = st.radio('Você monitora sua ingestão calórica diária?', ['Não', 'Sim'])
 
-st.write('### Atividade Física')
+st.markdown("<br>", unsafe_allow_html=True)
 input_FAF = st.selectbox('Com que frequência você pratica atividades físicas na semana?', ['Nunca', '~1–2×/sem', '~3–4×/sem', '5×/sem ou mais'])
 
-st.write('### Tempo em Dispositivos Eletrônicos')
+st.markdown("<br>", unsafe_allow_html=True)
 input_TUE = st.selectbox('Quantas horas por dia você utiliza dispositivos eletrônicos?', ['~0–2 h/dia', '~3–5 h/dia', '> 5 h/dia'])
 
-st.write('### Consumo de Álcool')
+st.markdown("<br>", unsafe_allow_html=True)
 input_CALC = st.selectbox('Com que frequência você consome bebidas alcoólicas?', ['Nunca', 'Às vezes', 'Frequentemente', 'Sempre'])
 
-st.write('### Meio de Transporte')
+st.markdown("<br>", unsafe_allow_html=True)
 input_MTRANS = st.selectbox('Qual o seu meio de transporte habitual?', dados['MTRANS'].unique())
+
+st.markdown("<br>", unsafe_allow_html=True)
+
 
 # Lista de todas as variáveis: 
 novo_registro = [input_genero,
@@ -142,7 +166,8 @@ X_treino, X_teste, y_treino, y_teste, pipeline = preparar_dados(df_train, df_tes
 
 
 # Rodar modelo ao apertar o botão de enviar
-if st.button('Enviar'):
+if st.button('Enviar Formulário'):
     model = joblib.load('modelo_forest.joblib')
     final_pred = model.predict(X_teste)
-    st.write("Resultado da Previsão: ", final_pred[-1])
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.write("#### Resultado da Previsão: ", final_pred[-1])
