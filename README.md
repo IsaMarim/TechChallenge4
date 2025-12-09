@@ -20,4 +20,34 @@ Com base na base de dados disponibilizada em **`obesity.csv`**, este projeto pro
 
 ## Estrutura do Projeto
 
+```
+📁 TechChallenge4/
+│
+├── 📂 bases/
+│   ├── Obesity.csv               # Base de dados original fornecida no desafio
+│   └── Obesity_tratado.csv       # Base de dados limpa e tratada para uso no modelo
+│
+├── 📄 app.py                     # Aplicação principal em Streamlit
+│                                 Responsável pela interface interativa e predição do nível de obesidade
+│
+├── 📓 modelo_tc4.ipynb           # Notebook de análise e modelagem
+│                                 Contém:
+│                                   - Exploração e tratamento dos dados
+│                                   - Teste da pipeline
+│                                   - Teste de diferentes modelos de Machine Learning
+│                                   - Comparação de métricas e escolha do modelo final (Random Forest)
+│
+├── 📄 modelo_forest.joblib       # Modelo Random Forest treinado e exportado
+│                                 Carregado pelo app Streamlit para realizar previsões em tempo real
+│
+├── 📄 utils.py                   # Arquivo de funções auxiliares e pipeline
+│                                 Inclui:
+│                                   - Pré-processamento dos dados de entrada
+│                                   - Normalização de variáveis quantitativas
+│                                   - Codificação de variáveis categóricas
+│
+├── 📄 requirements.txt           # Lista de dependências e versões utilizadas no projeto
+│                                 Permite recriar o ambiente necessário para execução
+│
+└── 📄 README.md                  # Documentação do projeto
 
