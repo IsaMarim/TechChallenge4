@@ -1,6 +1,5 @@
 # Tech Challenge 4 – Modelo Preditivo de Obesidade
 
-
 Isabela Marim Mayerhoffer Pereira - RM 362023
 
 Lucas Constantino Silva - RM 364620
@@ -8,6 +7,8 @@ Lucas Constantino Silva - RM 364620
 Pedro Bugui Garcia - RM 360783
 
 Sophia Yeshua Senra - RM 362887
+
+Link da apresentação: https://drive.google.com/file/d/19u6gVhK7r2J8LFKb8np4VOsFNyXpb8fa/view
 
 
 ## Introdução
